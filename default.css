@@ -1,0 +1,83 @@
+:root {
+    --main-colour: #474747;
+    --secondary-colour: #ffffff;
+    --accent-colour: beige;
+    --background-colour: #2b2b2b;
+
+    --mainText: beige;
+}
+
+body {
+    background-color: var(--background-colour);
+}
+
+.progress {
+    background-color: var(--mainText);
+    height: 5px;
+    width: 0%;
+    border-radius: 5px;
+
+}
+
+.progressBar {
+    background-color: #2b2b2b;
+    height: 4px;
+    width: 95%;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--main-colour);
+    padding-top: 3em;
+    padding-bottom: 3em;
+    
+    width: 60%;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.75em;
+}
+
+.btnContainer {
+    margin: auto;
+    text-align: center;
+    padding-top: 1rem;   
+}
+
+.setTimer {
+    background-color: var(--main-colour);
+    font-size: 1.25em;
+    /* margin-left: 0.75rem; */
+}
+
+#timeLeft {
+    text-align: center;
+    font-size: 3rem;
+    align-items: center;
+    letter-spacing: 0rem;
+}
+
+#theSwitch {
+    display: flex;
+    margin: auto;
+    background-color: var(--main-colour); /* Button Colour */
+
+    font-size: 2.5em;
+}
+
+h1, .setTimer, #timeLeft, #theSwitch {
+    font-family: 'Poppins', sans-serif;
+    color: var(--mainText);
+}
+
+.setTimer, #theSwitch {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
