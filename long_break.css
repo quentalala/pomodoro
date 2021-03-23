@@ -1,0 +1,79 @@
+:root {
+    --main-colour: #737778;
+    --secondary-colour: #BCC3C4;
+    --accent-colour: #ECF5F7;
+    --background-colour: #BCC3C4;
+
+    --mainText: #ECF5F7;
+}
+
+body {
+    background-color: var(--background-colour);
+}
+
+.progressBar {
+    background-color: var(--background-colour);
+    height: 4px;
+    width: 95%;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.progress {
+    background-color: var(--mainText);
+    height: 5px;
+    width: 0%;
+    border-radius: 5px;
+
+}
+
+.container {
+    background-color: var(--main-colour);
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3em;
+    padding-bottom: 3em;
+    
+    width: 60%;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.75em;
+}
+
+.btnContainer {
+    margin: auto;
+    text-align: center;
+    padding-top: 1rem;   
+}
+
+.setTimer {
+    background-color: var(--main-colour);
+    font-size: 1.25em;
+}
+
+#timeLeft {
+    text-align: center;
+    font-size: 3rem;
+}
+
+#theSwitch {
+    background-color: var(--main-colour);
+    display: flex;
+    margin: auto;
+    font-size: 2.5em;
+}
+
+h1, .setTimer, #timeLeft, #theSwitch {
+    font-family: 'Poppins', sans-serif;
+    color: var(--mainText);
+}
+
+.setTimer, #theSwitch {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
