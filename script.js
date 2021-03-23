@@ -4,17 +4,17 @@ const displayTime = document.querySelector('#timeLeft');
 
 const progress = document.querySelector('.progress');
 
-// const pomodoro = document.querySelector('#pomodoro');
-// const short_break = document.querySelector('#breather');
-// const long_break = document.querySelector('#break');
+const pomodoro = document.querySelector('#pomodoro');
+const short_break = document.querySelector('#breather');
+const long_break = document.querySelector('#break');
 
 
 //EVENT LISTENERS
 powerButton.addEventListener('click', whatYouSee);
 
-// pomodoro.addEventListener('click', changeTime)
-// short_break.addEventListener('click', changeTime)
-// long_break.addEventListener('click', changeTime)
+pomodoro.addEventListener('click', productivity);
+short_break.addEventListener('click', breather);
+long_break.addEventListener('click', break_time);
 
 
 //FUNCTIONS
@@ -35,7 +35,6 @@ function changeTime(setNewTime) {
     progressUpdate = 0;
     progress.style.width= progressUpdate + '%';
 }
-
         
 function buttonPressed() {
     if (timeInSeconds !== 0) {
@@ -51,13 +50,14 @@ function buttonPressed() {
     } else if (timeInSeconds == 0) {
         changeTime('25:00');
         pause();
+        productivity();
     }
 }
 
 function whatYouSee() { 
     if (powerButton.innerHTML === 'Start') {
         resume();
-        dropping = setInterval(buttonPressed, delayInMilliseconds);
+        countingDown = setInterval(buttonPressed, delayInMilliseconds);
     } else {
         pause();
     }
@@ -69,8 +69,26 @@ function resume() {
 
 function pause() {
     powerButton.innerHTML = 'Start';
-    clearInterval(dropping);
+    clearInterval(countingDown);
 }
 
+function productivity() {
+    document.getElementById('colour_theme').setAttribute('href', 'default.css');
+    document.getElementById('pomodoro').style.backgroundColor='#2b2b2b';
+    document.getElementById('breather').style.backgroundColor='#474747';
+    document.getElementById('break').style.backgroundColor='#474747';
+}
 
+function breather() {
+    document.getElementById('colour_theme').setAttribute('href', "short_break.css");
+    document.getElementById('pomodoro').style.backgroundColor='#7a7568';
+    document.getElementById('breather').style.backgroundColor='#c7bea9';
+    document.getElementById('break').style.backgroundColor='#7a7568';
+}
 
+function break_time() {
+    document.getElementById('colour_theme').setAttribute('href', "long_break.css");
+    document.getElementById('pomodoro').style.backgroundColor='#737778';
+    document.getElementById('breather').style.backgroundColor='#737778';
+    document.getElementById('break').style.backgroundColor='#BCC3C4';
+}

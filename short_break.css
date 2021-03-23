@@ -1,10 +1,10 @@
 :root {
-    --main-colour: #474747;
-    --secondary-colour: #ffffff;
-    --accent-colour: beige;
-    --background-colour: #2b2b2b;
+    --main-colour: #7a7568;
+    --secondary-colour: #c7bea9;
+    --accent-colour: #faefd4;
+    --background-colour: #c7bea9;
 
-    --mainText: beige;
+    --mainText: #faefd4;
 }
 
 body {
@@ -52,10 +52,6 @@ h1 {
 .setTimer {
     background-color: var(--main-colour);
     font-size: 1.25em;
-}
-
-#pomodoro {
-    background-color: var(--background-colour);
 }
 
 #timeLeft {
