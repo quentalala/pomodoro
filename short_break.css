@@ -13,7 +13,7 @@ body {
 
 .progressBar {
     background-color: var(--background-colour);
-    height: 4px;
+    height: 3px;
     width: 95%;
     margin: auto;
     border-radius: 5px;
@@ -21,7 +21,7 @@ body {
 
 .progress {
     background-color: var(--mainText);
-    height: 5px;
+    height: 4px;
     width: 0%;
     border-radius: 5px;
 
