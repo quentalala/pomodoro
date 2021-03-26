@@ -27,6 +27,10 @@ let progressUpdate = null;
 
 function changeTime(setNewTime) {
     displayTime.innerHTML = setNewTime;
+    document.title = displayTime.innerHTML; //Slight delay; tab title displays timer
+    pause(); 
+    //Without this, if you clicked one of the buttons to change the initial timer
+    //The timer would automatically continue counting down 
 
     timeLeft = parseInt(displayTime.innerHTML);
     initialTime = timeLeft * 60;
@@ -45,10 +49,15 @@ function buttonPressed() {
             seconds = '0' + seconds;
         }
     displayTime.innerHTML = (`${minutes}:${seconds}`)
+    document.title = displayTime.innerHTML; //Slight delay; tab title displays timer
     progressUpdate = (initialTime - timeInSeconds)/initialTime * 100;
     progress.style.width= progressUpdate + '%';
     } else if (timeInSeconds == 0) {
+        // timerDone();
+        document.title = 'nice!';
+        alert("Timer is done!");
         changeTime('25:00');
+        document.title = '25:00';
         pause();
         productivity();
     }
@@ -92,3 +101,8 @@ function break_time() {
     document.getElementById('breather').style.backgroundColor='#737778';
     document.getElementById('break').style.backgroundColor='#BCC3C4';
 }
+
+// function timerDone() {
+//     const audio = new Audio('https://youtu.be/0BxkgtQN4h4');
+//     audio.play();
+// }
