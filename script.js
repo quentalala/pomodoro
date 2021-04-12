@@ -1,59 +1,58 @@
 //SELECTORS
-const powerButton = document.querySelector('#theSwitch');
-const displayTime = document.querySelector('#timeLeft');
+const POWER_BUTTON = document.querySelector('#theSwitch');
+const TIME_DISPLAYED = document.querySelector('#timeLeft');
 
-const progress = document.querySelector('.progress');
+const PROGRESS = document.querySelector('.progress');
 
-const pomodoro = document.querySelector('#pomodoro');
-const short_break = document.querySelector('#breather');
-const long_break = document.querySelector('#break');
+const POMODORO_BUTTON = document.querySelector('#pomodoro');
+const SHORT_BREAK_BUTTON = document.querySelector('#breather');
+const LONG_BREAK_BUTTON = document.querySelector('#break');
 
 
 //EVENT LISTENERS
-powerButton.addEventListener('click', whatYouSee);
+POWER_BUTTON.addEventListener('click', whatYouSee);
 
-pomodoro.addEventListener('click', productivity);
-short_break.addEventListener('click', breather);
-long_break.addEventListener('click', break_time);
+POMODORO_BUTTON.addEventListener('click', productivity);
+SHORT_BREAK_BUTTON.addEventListener('click', breather);
+LONG_BREAK_BUTTON.addEventListener('click', break_time);
 
 
 //FUNCTIONS
 let delayInMilliseconds = 1000; // 1 second
 
-let timeLeft = parseInt(displayTime.innerHTML); // Only looks at minute
-let timeInSeconds = timeLeft * 60;
-let initialTime = timeLeft * 60;
-let progressUpdate = null;
+let time_left = parseInt(TIME_DISPLAYED.innerHTML); // Only looks at minute
+let time_in_seconds = time_left * 60;
+let initial_time = time_left * 60;
+let progress_update = null;
 
 function changeTime(setNewTime) {
-    displayTime.innerHTML = setNewTime;
-    document.title = displayTime.innerHTML; //Slight delay; tab title displays timer
+    TIME_DISPLAYED.innerHTML = setNewTime;
+    document.title = TIME_DISPLAYED.innerHTML; //Slight delay; tab title displays timer
     pause(); 
     //Without this, if you clicked one of the buttons to change the initial timer
     //The timer would automatically continue counting down 
 
-    timeLeft = parseInt(displayTime.innerHTML);
-    initialTime = timeLeft * 60;
-    timeInSeconds = timeLeft * 60;
+    time_left = parseInt(TIME_DISPLAYED.innerHTML);
+    initial_time = time_left * 60;
+    time_in_seconds = time_left * 60;
 
-    progressUpdate = 0;
-    progress.style.width= progressUpdate + '%';
+    progress_update = 0;
+    PROGRESS.style.width= progress_update + '%';
 }
         
 function buttonPressed() {
-    if (timeInSeconds !== 0) {
-        timeInSeconds--; // Driver
-        let minutes = Math.floor(timeInSeconds / 60);
-        let seconds = timeInSeconds % 60;
+    if (time_in_seconds !== 0) {
+        time_in_seconds--; // Driver
+        let minutes = Math.floor(time_in_seconds / 60);
+        let seconds = time_in_seconds % 60;
         if (seconds < 10) {
             seconds = '0' + seconds;
         }
-    displayTime.innerHTML = (`${minutes}:${seconds}`)
-    document.title = displayTime.innerHTML; //Slight delay; tab title displays timer
-    progressUpdate = (initialTime - timeInSeconds)/initialTime * 100;
-    progress.style.width= progressUpdate + '%';
-    } else if (timeInSeconds == 0) {
-        // timerDone();
+    TIME_DISPLAYED.innerHTML = (`${minutes}:${seconds}`)
+    document.title = TIME_DISPLAYED.innerHTML; //Slight delay; tab title displays timer
+    progress_update = (initial_time - time_in_seconds)/initial_time * 100;
+    PROGRESS.style.width = progress_update + '%'; //Progress bar elongates
+    } else if (time_in_seconds == 0) {
         document.title = 'nice!';
         alert("Timer is done!");
         changeTime('25:00');
@@ -64,23 +63,24 @@ function buttonPressed() {
 }
 
 function whatYouSee() { 
-    if (powerButton.innerHTML === 'Start') {
+    if (POWER_BUTTON.innerHTML === 'Start') {
         resume();
-        countingDown = setInterval(buttonPressed, delayInMilliseconds);
+        countingDown = setInterval(buttonPressed, delayInMilliseconds); //Driver for the timer
     } else {
         pause();
     }
 }
 
 function resume() {
-    powerButton.innerHTML = 'Stop';
+    POWER_BUTTON.innerHTML = 'Stop'; //Switches HTML to Stop
 }
 
 function pause() {
-    powerButton.innerHTML = 'Start';
+    POWER_BUTTON.innerHTML = 'Start'; //Switches HTML to Start
     clearInterval(countingDown);
 }
 
+// Is there a way to make the colour changes less redundant and more dynamic?
 function productivity() {
     document.getElementById('colour_theme').setAttribute('href', 'default.css');
     document.getElementById('pomodoro').style.backgroundColor='#2b2b2b';
@@ -101,8 +101,3 @@ function break_time() {
     document.getElementById('breather').style.backgroundColor='#737778';
     document.getElementById('break').style.backgroundColor='#BCC3C4';
 }
-
-// function timerDone() {
-//     const audio = new Audio('https://youtu.be/0BxkgtQN4h4');
-//     audio.play();
-// }
