@@ -34,13 +34,21 @@ body {
     padding-top: 3rem;
     padding-bottom: 3rem;
     
+    min-height: 575px;
+    min-width: 400px;
+    height: 52vh;
     width: 60%;
     border-radius: 10px;
 }
 
 h1 {
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.5rem;
+}
+
+.name {
+    margin-top: 4rem;
+    font-size: 3.5rem;
 }
 
 .btnContainer {
@@ -51,7 +59,7 @@ h1 {
 
 .setTimer {
     background-color: var(--main-colour);
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 #pomodoro {
@@ -60,16 +68,10 @@ h1 {
 
 #timeLeft {
     text-align: center;
-    font-size: 5rem;
+    font-size: 10.5rem;
     line-height: 1rem;
 }
 
-#theSwitch {
-    background-color: var(--main-colour);
-    display: flex;
-    margin: auto;
-    font-size: 2.5em;
-}
 
 h1, .setTimer, #timeLeft, #theSwitch {
     font-family: 'Poppins', sans-serif;
@@ -79,6 +81,22 @@ h1, .setTimer, #timeLeft, #theSwitch {
 .setTimer, #theSwitch {
     cursor: pointer;
     border: none;
-    border-radius: 5px;
+    border-width: 0.15rem;
+    border-radius: 10px;
     outline: none;
+    margin: 0.25rem;
+
+    -webkit-box-shadow: -1px 1px 3px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 1px 3px -1px rgba(0,0,0,0.75);
+    box-shadow: -1px 1px 3px -1px rgba(0,0,0,0.75);
+}
+
+#theSwitch {
+    background-color: var(--main-colour);
+    display: flex;
+    margin: auto;
+    font-size: 2.5rem;
+    width: 6.7rem;
+    justify-content: center;
+    
 }
