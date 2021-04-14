@@ -24,6 +24,7 @@ let time_left = parseInt(TIME_DISPLAYED.innerHTML); // Only looks at minute
 let time_in_seconds = time_left * 60;
 let initial_time = time_left * 60;
 let progress_update = null;
+let countingDown = null; // Without setting this variable, there are errors for uncaught references
 
 function changeTime(setNewTime) {
     TIME_DISPLAYED.innerHTML = setNewTime;
@@ -73,19 +74,33 @@ function whatYouSee() {
 
 function resume() {
     POWER_BUTTON.innerHTML = 'Stop'; //Switches HTML to Stop
+    if (document.getElementById('colour_theme').href.includes('default.css')) {
+        document.getElementById('theSwitch').style.backgroundColor='#404040';
+    } else if (document.getElementById('colour_theme').href.includes('short_break.css')) {
+        document.getElementById('theSwitch').style.backgroundColor='#7a7568'; // Update to darker shade
+    } else if (document.getElementById('colour_theme').href.includes('long_break.css')) {
+        document.getElementById('theSwitch').style.backgroundColor='#737778'; // Update to darker shade
+    }
 }
 
 function pause() {
     POWER_BUTTON.innerHTML = 'Start'; //Switches HTML to Start
+    if (document.getElementById('colour_theme').href.includes('default.css')) {
+        document.getElementById('theSwitch').style.backgroundColor='#474747';
+    } else if (document.getElementById('colour_theme').href.includes('short_break.css')) {
+        document.getElementById('theSwitch').style.backgroundColor='#7a7568'; 
+    } else if (document.getElementById('colour_theme').href.includes('long_break.css')) {
+        document.getElementById('theSwitch').style.backgroundColor='#737778';
+    }
     clearInterval(countingDown);
 }
 
-// Is there a way to make the colour changes less redundant and more dynamic?
 function productivity() {
     document.getElementById('colour_theme').setAttribute('href', 'default.css');
     document.getElementById('pomodoro').style.backgroundColor='#2b2b2b';
     document.getElementById('breather').style.backgroundColor='#474747';
     document.getElementById('break').style.backgroundColor='#474747';
+    document.getElementById('theSwitch').style.backgroundColor='#474747';
 }
 
 function breather() {
@@ -93,6 +108,7 @@ function breather() {
     document.getElementById('pomodoro').style.backgroundColor='#7a7568';
     document.getElementById('breather').style.backgroundColor='#c7bea9';
     document.getElementById('break').style.backgroundColor='#7a7568';
+    document.getElementById('theSwitch').style.backgroundColor='#7a7568';
 }
 
 function break_time() {
@@ -100,4 +116,5 @@ function break_time() {
     document.getElementById('pomodoro').style.backgroundColor='#737778';
     document.getElementById('breather').style.backgroundColor='#737778';
     document.getElementById('break').style.backgroundColor='#BCC3C4';
+    document.getElementById('theSwitch').style.backgroundColor='#737778';
 }
