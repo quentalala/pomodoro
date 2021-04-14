@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodoro Timer</title>
+    <title>Pomodoro</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -11,12 +11,11 @@
     <link rel="stylesheet" id="colour_theme" href="default.css">
 </head>
 <body>
-    
     <div class="container">
         <div class="progressBar">
             <div class="progress"></div>
         </div>
-        <h1>Pomodoro Timer</h1>
+        <h1 class="name">Pomodoro Timer</h1>
         <div class="btnContainer">
             <button type="button" class="setTimer" id="pomodoro" onclick="changeTime('25:00')">Pomodoro</button>
             <button type="button" class="setTimer" id="breather" onclick="changeTime('5:00')">Short Break</button>
@@ -24,7 +23,9 @@
         </div>
 
         <p id="timeLeft">25:00</p>
-        <button type="button" id="theSwitch">Start</button>
+        <div class="powerButton">
+            <button type="button" id="theSwitch">Start</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
